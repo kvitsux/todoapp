@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Todo">
+<head>
+	<meta charset="UTF-8">
+	<title>ToDo</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+	<script src="app.js"></script>
+</head>
+<body>
+	<main ng-controller="TodoCtrl">
+		Filter: <input type="text" ng-model="filterValue"><br>
+		<input type="text" ng-model="currentTodo"><button ng-click="addTodo()">Add todo</button>
+		<ul>
+			<li ng-repeat="todo in todos | filter: filterValue track by $index" ng-class="(todo.completed) ? 'completed': ''"><input type="checkbox" ng-model="todo.completed" /><button ng-click="removeTodo($index)">X</button>{{todo.label}}</li>
+		</ul>
+	</main>
+</body>
+</html>
